@@ -1,1 +1,24 @@
 
+@import '_variables.scss';
+@import '_mixins.scss';
+@import 'normalize.css';
+
+header,
+footer {
+  background-color: $header-background;
+  
+
+  h1 {
+    margin: 0;
+  }
+}
+
+main {
+  background-color: $main-background;
+  display: flex;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+  }
+}
