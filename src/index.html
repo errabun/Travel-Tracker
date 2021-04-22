@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <script src="https://kit.fontawesome.com/41f2c89ebe.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje!</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
+    <header>
+      <h1 class="welcome-msg">Welcome!</h1>
+      <h1><i class="fas fa-passport"></i>Viaje Travel</h1>
+      <nav>
+        <button class="past-trips">Past Trips</button>
+        <button class="current-trips">Current Trip</button>
+        <button class="upcoming">Upcoming Trips</button>
+        <button class="book">Book a trip!</button>
+      </nav>
+    </header>
+    <main>
+      <h2 class="form-header">Current Trips</h2>
+      <section class="travel-cards"></section>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    </main>
+    <footer>
+      <section class="contact-info">
+        <p class="address">
+          123 Nowhere Street
+          Denver, CO 80112
+        </p>
+        <p>Phone: 303.106.4354</p>
+        <p>Email: support@viaje.com</p>
+      </section>
+    </footer>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

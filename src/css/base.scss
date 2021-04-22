@@ -1,7 +1,24 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
 
-body {
-  background: $primary-background;
+@import '_variables.scss';
+@import '_mixins.scss';
+@import 'normalize.css';
+
+header,
+footer {
+  background-color: $header-background;
+  
+
+  h1 {
+    margin: 0;
+  }
+}
+
+main {
+  background-color: $main-background;
+  display: flex;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+  }
 }
