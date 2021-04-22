@@ -6,17 +6,34 @@
 header,
 footer {
   background-color: $header-background;
-  
+  height: 15%;
 
-  h1 {
-    margin: 0;
+
+  nav {
+    @include flex-center;
+
+    button {
+      margin: 20px;
+    }
   }
+
+  .welcome-logo {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+}
+
+footer {
+  @include flex-center;
 }
 
 main {
   background-color: $main-background;
-  display: flex;
-  justify-content: center;
+  @include flex-center;
+  height: 70vh;
 
   h2 {
     margin: 0;
