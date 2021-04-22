@@ -6,7 +6,11 @@ class Traveler {
     this.myTrips = [];
   }
 
-  
+  findAllTrips(tripData, destinationData) {
+    const findTrips = tripData.filter(trip => trip.userID === this.id);
+    const findDestination = destinationData.find(trips => trips.id === findTrips[0].destinationID)
+    return this.myTrips.push(findDestination);
+  }
 }
 
 export default Traveler;

@@ -5,6 +5,8 @@ class Destination {
     this.estimatedLodgingCostPerDay = estimatedLodgingCostPerDay;
     this.estimatedFlightCostPerPerson = estimatedFlightCostPerPerson;
     this.image = image;
-    this.alt = alt; 
+    this.alt = alt;
   }
 }
+
+export default Destination;
