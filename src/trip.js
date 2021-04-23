@@ -25,7 +25,7 @@ class Trip {
   }
 
   getTotalCostTrip(destination) {
-    return this.getCostPerPerson(destination) * this.travelers; 
+    return this.getCostPerPerson(destination) * this.travelers;  
   }
 }
 

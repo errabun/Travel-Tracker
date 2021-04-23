@@ -7,8 +7,10 @@ class Traveler {
   }
 
   findPastTrips() {
-
+    let 
   }
+
+
 }
 
 export default Traveler;

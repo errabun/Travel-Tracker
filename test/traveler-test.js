@@ -17,7 +17,6 @@ describe('Traveler', function() {
     traveler = new Traveler(travelerInfo);
 
     tripInfo = new TripRepo(tripData);
-
   });
 
   it('should be a function', function() {
