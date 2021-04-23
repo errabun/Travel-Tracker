@@ -5,6 +5,10 @@ class Traveler {
     this.travelerType = data.travelerType;
     this.myTrips = [];
   }
+
+  findPastTrips() {
+    return this.myTrips
+  }
 }
 
 export default Traveler;
