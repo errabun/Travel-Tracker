@@ -8,20 +8,46 @@
   <body>
     <header>
       <section class="welcome-logo">
-        <h1 class="welcome-msg">Welcome!</h1>
+        <h1>Let's Travel!</h1>
         <h1><i class="fas fa-passport"></i>Viaje Travel</h1>
       </section>
-      <nav>
-        <button class="past-trips">Past Trips</button>
-        <button class="current-trips">Current Trip</button>
-        <button class="upcoming">Upcoming Trips</button>
-        <button class="book">Book a trip!</button>
-      </nav>
     </header>
-    <main>
-      <h2 class="form-header">Current Trips</h2>
-      <section class="travel-cards"></section>
-
+    <main class="user-dashboard">
+      <section class="user-stats">
+        <h3 class="welcome">Welcome user</h3>
+        <p class="previous-year">You spent $x last year on trips</p>
+        <p class="current-year">You've spent $x on travel this year</p>
+      </section>
+      <section class="book-trip">
+        <form action="" class="book">
+          <h3 class="book-title">Book a trip with us:</h3>
+          <div class="book-inputs">
+            <label for="destination" >Where to:</label>
+            <select type="dropdown" name="destination" id="destination"></select>
+              <option value=""></option>
+            <label for="startDate">Depart on:</label>
+            <select name="startDate" id="startDate"></select>
+            <label for="endDate">Return on:</label>
+            <select name="endDate" id="endDate"></select>
+            <label for="numTravelers">Number of Travelers</label>
+            <select name="numTravelers" id="numTravelers"></select>
+          </div>
+        </form>
+      </section>
+      <section class="trip-cards">
+        <article class="past-trips">
+          <h3>Past Trips</h3>
+        </article>
+        <article class="current-trips">
+          <h3>Current Trips</h3>
+        </article>
+        <article class="upcoming-trips">
+          <h3>Upcoming Trips</h3>
+        </article>
+        <article class="pending-trips">
+          <h3>Pending Trips</h3>
+        </article>
+      </section>
     </main>
     <footer>
       <section class="contact-info">

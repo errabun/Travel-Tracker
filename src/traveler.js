@@ -7,7 +7,7 @@ class Traveler {
   }
 
   findPastTrips() {
-    let 
+    
   }
 
 
