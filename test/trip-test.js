@@ -42,10 +42,14 @@ describe('Trips', function() {
   });
 
   it('should start with an empty list of trips', function() {
-    expect(trip.travelers).to.deep.eq(4)
+    expect(trip.travelers).to.eq(4)
   })
 
   it('should be able to return the cost per person ', function() {
-    expect(trip.getCostPerPerson(destination)).to.deep.eq(1590)
+    expect(trip.getCostPerPerson(destination)).to.eq(1590)
+  })
+
+  it('should be able to return the total cost of a trip for all travelers', function() {
+    expect(trip.getTotalCostTrip(destination)).to.eq(6360)
   })
 });

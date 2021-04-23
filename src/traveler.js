@@ -7,7 +7,7 @@ class Traveler {
   }
 
   findPastTrips() {
-    return this.myTrips
+
   }
 }
 

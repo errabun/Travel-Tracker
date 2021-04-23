@@ -19,7 +19,13 @@ class Trip {
   }
 
   getCostPerPerson(destination) {
-    return (destination.estimatedLodgingCostPerDay * this.duration) + destination.estimatedFlightCostPerPerson;
+    const lodgingCostPP = destination.estimatedLodgingCostPerDay * this.duration;
+    const flightCostPP = destination.estimatedFlightCostPerPerson;
+    return lodgingCostPP + flightCostPP;
+  }
+
+  getTotalCostTrip(destination) {
+    return this.getCostPerPerson(destination) * this.travelers; 
   }
 }
 

@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import Traveler from '../src/traveler';
 import TripRepo from '../src/trips-repo'
 import Destination from '../src/destination'
+import Trip from '../src/trip'
 import destinationData from './destination-test-data';
 import travelerData from './traveler-test-data';
 import tripData from './trips-test-data';
@@ -59,5 +60,5 @@ describe('Traveler', function() {
         suggestedActivities: []
       }
     ])
-  })
+  });
 });
