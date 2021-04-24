@@ -11,15 +11,15 @@ describe('Trips', function() {
   let traveler, travelerInfo, tripInfo, trip, destination, destinationInfo;
 
   beforeEach(function() {
-    travelerInfo = travelerData[2];
+    travelerInfo = travelerData.travelers[2];
 
     traveler = new Traveler(travelerInfo);
 
-    tripInfo = tripData[2];
+    tripInfo = tripData.trips[2];
 
     trip = new Trip(tripInfo);
 
-    destinationInfo = destinationData[0];
+    destinationInfo = destinationData.destinations[0];
 
     destination = new Destination(destinationInfo);
 
@@ -54,7 +54,7 @@ describe('Trips', function() {
   });
 
   it('should be able to return the total cost of a trip with a 10% agent fee', function() {
-    expect(trip.getTotalWithAgentFee(destination)).to.eq(6996)
+    expect(trip.getTotalWithAgentFee(destination)).to.eq(6996.00)
   });
 
 

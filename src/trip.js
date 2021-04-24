@@ -30,10 +30,8 @@ class Trip {
 
   getTotalWithAgentFee(destination) {
     let preFees = this.getTotalCostTrip(destination);
-    return preFees += preFees * 0.1
+    return parseInt((preFees += preFees * 0.1).toFixed(2)); 
   }
-
-
 }
 
 export default Trip;

@@ -9,7 +9,7 @@ describe('TripRepo', function() {
   let traveler, travelerInfo, tripRepo;
 
   beforeEach(function() {
-    travelerInfo = travelerData[2];
+    travelerInfo = travelerData.travelers[2];
 
     traveler = new Traveler(travelerInfo);
 

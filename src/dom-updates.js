@@ -5,22 +5,37 @@ const domUpdates = {
     element.innerHTML = `Welcome ${traveler.name}!`
   },
 
-  displayPrevYrSpending(travler) {
+  displayPrevYrSpending(traveler, allDestinations) {
     let element = document.querySelector('.previous-year');
-    element.innerHTML = 
-  }
+    element.innerHTML = 'You spent $' + traveler.calcPrevYearSpending(allDestinations) + ' last year on trips'
+  },
 
-  // addTripCardToDom(destination, trip, element) {
-  //   let cardHtml = `
-  //     <article class="destination-card" id=${destination.id}>
-  //       <h3 maxlength="40">${destination.destination}</h3>
-  //       <p>${trip.date} for ${trip.duration} days</p>
-  //       <div class="card-photo-container">
-  //         <img src=${destination.image} class="card-photo-preview" alt="${destination.alt}">
-  //       </div>
-  //     </article>`
-  //   element.insertAdjacentHTML("beforeend", element);
-  // },
+  displayCurrentYrSpending(traveler, allDestinations) {
+    let element = document.querySelector('.current-year');
+    element.innerHTML = 'You spent $' + traveler.calcCurrentYearSpending(allDestinations) + ' this year on trips'
+  },
+
+  // displayPastTrips(traveler) {
+  //   let element = document.querySelector('')
+  // }
+
+  addTripCardToDom(myTrips, element, allDestinations) {
+    let destinationName = myTrips.map(trip => {
+      return allDestinations.destinations.find(destination => {
+        if (trip.destinationID === destination.id) {
+          return destination.destination;
+        }
+      })
+    })
+    let cardHtml = `
+      <article class="destination-card" id=${destination.id}>
+        <h3>${destinationName}</h3>
+        <p>${trip.date} for ${trip.duration} days</p>
+        <div class="card-photo-container">
+          <img src=${destination.image} class="card-photo-preview" alt="${destination.alt}">
+        </div>
+      </article>`
+  },
 }
 
 export default domUpdates;

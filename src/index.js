@@ -13,11 +13,15 @@ window.addEventListener('load', onStart)
 
 
 function onStart() {
-  loadAPIs(20)
+  loadAPIs(2)
   .then(allData => {
     traveler = new Traveler(allData.getSingleTraveler);
     allTrips = new TripRepo(allData.getAllTrips);
     allDestinations = allData.getAllDestinations;
-    domUpdates.greetUser(traveler); 
+    allTrips.findTripsByID(traveler);
+    domUpdates.greetUser(traveler);
+    domUpdates.displayPrevYrSpending(traveler, allDestinations.destinations);
+    domUpdates.displayCurrentYrSpending(traveler, allDestinations.destinations)
+    domUpdates.addTripCardToDom()
   })
 }

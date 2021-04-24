@@ -12,7 +12,7 @@ describe('Traveler', function() {
   let traveler, travelerInfo, tripInfo;
 
   beforeEach(function() {
-    travelerInfo = travelerData[2];
+    travelerInfo = travelerData.travelers[2];
 
     traveler = new Traveler(travelerInfo);
 
@@ -63,6 +63,11 @@ describe('Traveler', function() {
 
   it('should be able to calculate how much the traveler spent on trips the previous year', function() {
     tripInfo.findTripsByID(traveler);
-    expect(traveler.calcPrevYearSpending(destinationData)).to.eq()
-  })
+    expect(traveler.calcPrevYearSpending(destinationData.destinations)).to.eq(0)
+  });
+
+  it('should be able to calculate how much the traveler spent on trips for the current year', function() {
+    tripInfo.findTripsByID(traveler);
+    expect(traveler.calcCurrentYearSpending(destinationData.destinations)).to.eq(20168)
+  });
 });

@@ -1,6 +1,8 @@
+import Trip from './trip'
+
 class TripRepo {
   constructor(data) {
-    this.allTrips = data;
+    this.allTrips = data.trips.map(trip => new Trip(trip))
   }
 
   findTripsByID(traveler) {
