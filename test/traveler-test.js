@@ -60,4 +60,9 @@ describe('Traveler', function() {
       }
     ])
   });
+
+  it('should be able to calculate how much the traveler spent on trips the previous year', function() {
+    tripInfo.findTripsByID(traveler);
+    expect(traveler.calcPrevYearSpending(destinationData)).to.eq()
+  })
 });

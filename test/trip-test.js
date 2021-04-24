@@ -48,8 +48,14 @@ describe('Trips', function() {
   it('should be able to return the cost per person ', function() {
     expect(trip.getCostPerPerson(destination)).to.eq(1590)
   })
- 
+
   it('should be able to return the total cost of a trip for all travelers', function() {
     expect(trip.getTotalCostTrip(destination)).to.eq(6360)
-  })
+  });
+
+  it('should be able to return the total cost of a trip with a 10% agent fee', function() {
+    expect(trip.getTotalWithAgentFee(destination)).to.eq(6996)
+  });
+
+
 });

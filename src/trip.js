@@ -25,8 +25,15 @@ class Trip {
   }
 
   getTotalCostTrip(destination) {
-    return this.getCostPerPerson(destination) * this.travelers;  
+    return this.getCostPerPerson(destination) * this.travelers;
   }
+
+  getTotalWithAgentFee(destination) {
+    let preFees = this.getTotalCostTrip(destination);
+    return preFees += preFees * 0.1
+  }
+
+
 }
 
 export default Trip;
