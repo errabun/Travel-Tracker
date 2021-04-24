@@ -2,40 +2,4 @@
 @import '_variables.scss';
 @import '_mixins.scss';
 @import 'normalize.css';
-
-header,
-footer {
-  background-color: $header-background;
-  height: 15%;
-
-
-  nav {
-    @include flex-center;
-
-    button {
-      margin: 20px;
-    }
-  }
-
-  .welcome-logo {
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-  }
-
-
-}
-
-footer {
-  @include flex-center;
-}
-
-main {
-  background-color: $main-background;
-  @include flex-center;
-  height: 70vh;
-
-  h2 {
-    margin: 0;
-  }
-}
+@import '_media-queries.scss'

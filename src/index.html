@@ -22,15 +22,21 @@
         <form action="" class="book">
           <h3 class="book-title">Book a trip with us:</h3>
           <div class="book-inputs">
-            <label for="destination" >Where to:</label>
-            <select type="dropdown" name="destination" id="destination"></select>
-              <option value=""></option>
-            <label for="startDate">Depart on:</label>
-            <select name="startDate" id="startDate"></select>
-            <label for="endDate">Return on:</label>
-            <select name="endDate" id="endDate"></select>
-            <label for="numTravelers">Number of Travelers</label>
-            <select name="numTravelers" id="numTravelers"></select>
+            <div class="destination-input">
+              <label for="destination" >Where to:</label>
+              <select type="dropdown" name="destination" id="destination"></select>
+                <option value=""></option>
+            </div>
+            <div class="travel-date">
+              <label for="startDate">Depart on:</label>
+              <select name="startDate" id="startDate"></select>
+              <label for="endDate">Return on:</label>
+              <select name="endDate" id="endDate"></select>
+            </div>
+            <div class="number-travel">
+              <label for="numTravelers">Number of Travelers</label>
+              <select name="numTravelers" id="numTravelers"></select>
+            </div>
           </div>
         </form>
       </section>
