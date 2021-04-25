@@ -57,5 +57,4 @@ describe('Trips', function() {
     expect(trip.getTotalWithAgentFee(destination)).to.eq(6996.00)
   });
 
-
 });

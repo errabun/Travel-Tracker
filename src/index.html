@@ -29,8 +29,8 @@
                   <option value=""></option>
               </div>
               <div class="travel-date">
-                <label for="startDate">Depart on:</label>
-                <input type="date" class="start-date" id="startDate" aria-label="departure-select">
+                <label for="depart">Depart on:</label>
+                <input type="date" id="depart" name="depart"  aria-label="departure-select">
                 <label for="duration">Duration of trip:</label>
                 <input type="number" min="1" max="1000" value="1" class="duration" id="duration" aria-label="trip-duration-select">
               </div>
@@ -38,8 +38,10 @@
                 <label for="numTravelers">Number of Travelers</label>
                 <input type="number" min="1" max="25" value="1" id="numTravelers" aria-label="number-of-travelers-select">
               </div>
-              <button class="book-trip-btn">Book this trip</button>
-              <button class="estimate-trip">Get estimate for this trip</button>
+              <div class="button-wrapper">
+                <button class="book-trip-btn">Book this trip</button>
+                <button class="estimate-trip">Get estimate for this trip</button>
+              </div>
               <div class="display-estimates"></div>
             </div>
           </form>

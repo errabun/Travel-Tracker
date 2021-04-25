@@ -23,6 +23,8 @@ const domUpdates = {
               <article class="destination-card" id=${destination.id}>
                 <h3>${destination.destination}</h3>
                 <p>${trip.date} for ${trip.duration} days</p>
+                <p>Number of passengers: ${trip.travelers}</p>
+                <p>Trip total w/ 10% agent fee: $${trip.getTotalWithAgentFee(destination)}</p>
                 <p>Trip Status: ${trip.status}</p>
                 <div class="card-photo-container">
                   <img src=${destination.image} class="card-photo-preview" alt="${destination.alt}" height="300px">
@@ -47,7 +49,7 @@ const domUpdates = {
       <p class="estimate-per-person">Cost Per Person: ${costPerPerson}</p>
       <p class="estimate-all">Total All Travelers: ${estimatedTotalCost}</p>
       <p class="estimate-fees">Total + Agent Fees: ${totalPlusFees}</p>`
-  }
+  },
 }
 
 export default domUpdates;

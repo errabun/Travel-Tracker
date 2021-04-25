@@ -13,12 +13,13 @@ const tripCardsGrid = document.querySelector('.cards-wrapper');
 const tripCardsSection = document.querySelector('.trip-cards');
 const departDay = document.querySelector('.start-date');
 const destinationSelect = document.querySelector('.destination-list');
-const departDaySelect = document.querySelector('#startDate');
+const departDaySelect = document.querySelector('#depart');
 const tripDurationSelect = document.querySelector('#duration');
 const numTravelersSelect = document.querySelector('#numTravelers');
 const bookTripBtn = document.querySelector('.book-trip-btn');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
+const errorMsgPointer = document.querySelector('.user-dashboard');
 
 window.addEventListener('load', onStart)
 bookTripBtn.addEventListener('click', postTrip)
@@ -45,13 +46,13 @@ function displayStartDOM () {
 }
 
 function postTrip() {
-  event.preventDefault();
+  // event.preventDefault();
   if ( new Date(departDaySelect.value) > Date.now() ) {
     let newTrip = fetch("http://localhost:3001/api/v1/trips", {
       method: 'POST',
       body: JSON.stringify({
         "id": allTrips.allTrips.length + 1,
-        "userID": 2,
+        "userID": traveler.id,
         "destinationID": parseInt(destinationSelect.value),
         "travelers": numTravelersSelect.value,
         "date": formatDate(departDaySelect.value),
@@ -64,7 +65,10 @@ function postTrip() {
     .then(response => response.json())
     .then(data => console.log(data))
     .then(data => traveler.myTrips.push(data.newTrip))
+    .then(updateMyTrips => allTrips.findTripsByID(traveler))
     .catch(err => console.log(err.message))
+  } else {
+    estimateDOMPointer.innerHTML = "Please select a date in the future";
   }
 }
 
