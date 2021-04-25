@@ -20,21 +20,22 @@ const domUpdates = {
   // }
 
   addTripCardToDom(myTrips, element, allDestinations) {
-    let destinationName = myTrips.map(trip => {
+    
+    return myTrips.map(trip => {
       return allDestinations.destinations.find(destination => {
         if (trip.destinationID === destination.id) {
-          return destination.destination;
+          let cardHtml = `
+              <article class="destination-card" id=${destination.id}>
+                <h3>${destination.destination}</h3>
+                <p>${trip.date} for ${trip.duration} days</p>
+                <div class="card-photo-container">
+                  <img src=${destination.image} class="card-photo-preview" alt="${destination.alt}" height="300px">
+                </div>
+              </article>`
+          return element.insertAdjacentHTML("afterend", cardHtml);
         }
       })
     })
-    let cardHtml = `
-      <article class="destination-card" id=${destination.id}>
-        <h3>${destinationName}</h3>
-        <p>${trip.date} for ${trip.duration} days</p>
-        <div class="card-photo-container">
-          <img src=${destination.image} class="card-photo-preview" alt="${destination.alt}">
-        </div>
-      </article>`
   },
 }
 

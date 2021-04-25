@@ -31,6 +31,7 @@ class Traveler {
       return total;
     }, 0)
   }
+
 }
 
 export default Traveler;

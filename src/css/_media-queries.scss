@@ -1,4 +1,5 @@
 @media screen and (min-width: 320px) {
+
   header,
   footer {
     background-color: $header-background;
@@ -34,10 +35,14 @@
       align-self: center;
     }
 
-    .book-trip,
-    .trip-cards {
+    .book-trip {
       @include flex-center;
     }
+  }
+
+  .trip-cards {
+    display: flex;
+    flex-direction: column;
   }
 }
 
