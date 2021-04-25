@@ -30,6 +30,11 @@
     // @include flex-center;
     height: auto;
 
+    h2 {
+      text-decoration: underline;
+      color: $header-background;
+    }
+
     h3 {
       margin: 0;
       align-self: center;
@@ -42,8 +47,42 @@
 
   .trip-cards {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+
+    .past-trips,
+    .current-trips,
+    .upcoming-trips,
+    .pending-trips {
+      border: 5px solid grey;
+    }
   }
+
+  .stats-book {
+    display: flex;
+    justify-content: space-around;
+
+    .user-stats,
+    .book-trip {
+      border: 15px solid grey;
+      background-color: white;
+    }
+  }
+
+  .past-trips {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+
+
+  }
+
+  .current-trips {}
 }
 
 @media screen and (min-width: 768px) {

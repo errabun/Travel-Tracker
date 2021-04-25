@@ -15,12 +15,7 @@ const domUpdates = {
     element.innerHTML = 'You spent $' + traveler.calcCurrentYearSpending(allDestinations) + ' this year on trips'
   },
 
-  // displayPastTrips(traveler) {
-  //   let element = document.querySelector('')
-  // }
-
   addTripCardToDom(myTrips, element, allDestinations) {
-    
     return myTrips.map(trip => {
       return allDestinations.destinations.find(destination => {
         if (trip.destinationID === destination.id) {
@@ -36,6 +31,16 @@ const domUpdates = {
         }
       })
     })
+  },
+
+  bookNewTrip(destinations) {
+    const destSelect = document.querySelector('.destination-input');
+    destSelect.innerHTML =
+    `<label for="destination-list">Where to:</label>
+    <select aria-label="select-destination" class="destination-list" name="destination-list">
+    ${destinations.map(destination => {
+      return `<option value="${destination.id}">${destination.destination}</option>`
+    })}`
   },
 }
 

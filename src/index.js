@@ -27,9 +27,14 @@ function onStart() {
     domUpdates.displayPrevYrSpending(traveler, allDestinations.destinations);
     domUpdates.displayCurrentYrSpending(traveler, allDestinations.destinations)
     domUpdates.addTripCardToDom(traveler.myTrips, pastTrips, allDestinations)
+    domUpdates.bookNewTrip(allDestinations.destinations); 
   })
 }
 
 function showDestinationOptions(destinations) {
-  
+
+}
+
+function bookNewTrip() {
+
 }

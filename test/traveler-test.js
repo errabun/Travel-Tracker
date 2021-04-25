@@ -70,4 +70,18 @@ describe('Traveler', function() {
     tripInfo.findTripsByID(traveler);
     expect(traveler.calcCurrentYearSpending(destinationData.destinations)).to.eq(20168)
   });
+
+  it('should be able to return the trips that are pending', function() {
+    tripInfo.findTripsByID(traveler);
+    expect(traveler.getPendingTrips()).to.deep.eq([{
+      "id": 3,
+      "userID": 3,
+      "destinationID": 1,
+      "travelers": 4,
+      "date": "2020/05/22",
+      "duration": 17,
+      "status": "pending",
+      "suggestedActivities": []
+    }])
+  })
 });

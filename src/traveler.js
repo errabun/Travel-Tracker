@@ -32,6 +32,9 @@ class Traveler {
     }, 0)
   }
 
+  getPendingTrips() {
+    return this.myTrips.filter(trip => trip.status === 'pending')
+  }
 }
 
 export default Traveler;
