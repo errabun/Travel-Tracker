@@ -39,4 +39,4 @@ const loadAPIs = (id) => {
     })
     .catch(err => console.log('it broke...', err.message))
 }
-export default loadAPIs
+export default loadAPIs; 

@@ -50,7 +50,7 @@ function postTrip() {
     let newTrip = fetch("http://localhost:3001/api/v1/trips", {
       method: 'POST',
       body: JSON.stringify({
-        "id": allTrips.length + 1,
+        "id": allTrips.allTrips.length + 1,
         "userID": 2,
         "destinationID": parseInt(destinationSelect.value),
         "travelers": numTravelersSelect.value,
@@ -63,6 +63,7 @@ function postTrip() {
     })
     .then(response => response.json())
     .then(data => console.log(data))
+    .then(data => traveler.myTrips.push(data.newTrip))
     .catch(err => console.log(err.message))
   }
 }

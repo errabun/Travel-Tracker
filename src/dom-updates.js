@@ -16,17 +16,6 @@ const domUpdates = {
   },
 
   addTripCardToDom(myTrips, allDestinations, element) {
-    // let element;
-    // myTrips.filter(trip => {
-    //   console.log(trip.status)
-    //   if (trip.status === 'pending') {
-    //     element = pendingTrips;
-    //   } else if (new Date(trip.date) > Date.now() && trip.status === 'approved') {
-    //     element = upcomingTrips;
-    //   } else {
-    //     return element = pastTrips;
-    //   }
-    // })
     return myTrips.map(trip => {
       return allDestinations.destinations.find(destination => {
         if (trip.destinationID === destination.id) {
