@@ -6,7 +6,7 @@ Please include changes made or which issues were fixed.
 # Type of Change
 - [ ] Feature HTML
 - [ ] Feature JavaScript
-- [ ] Feature CSS
+- [ ] Feature CSS 
 - [ ] Refactor/Fix Bugs
 
 # Please describe the change made

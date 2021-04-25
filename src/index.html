@@ -7,19 +7,48 @@
   </head>
   <body>
     <header>
-      <h1 class="welcome-msg">Welcome!</h1>
-      <h1><i class="fas fa-passport"></i>Viaje Travel</h1>
-      <nav>
-        <button class="past-trips">Past Trips</button>
-        <button class="current-trips">Current Trip</button>
-        <button class="upcoming">Upcoming Trips</button>
-        <button class="book">Book a trip!</button>
-      </nav>
+      <section class="welcome-logo">
+        <h1>Let's Travel!</h1>
+        <h1><i class="fas fa-passport"></i>Viaje Travel</h1>
+      </section>
     </header>
-    <main>
-      <h2 class="form-header">Current Trips</h2>
-      <section class="travel-cards"></section>
-
+    <main class="user-dashboard">
+      <section class="stats-book">
+        <section class="user-stats">
+          <h3 class="welcome"></h3>
+          <p class="previous-year"></p>
+          <p class="current-year"></p>
+        </section>
+        <section class="book-trip">
+          <form action="" class="book">
+            <h3 class="book-title">Book a trip with us:</h3>
+            <div class="book-inputs">
+              <div class="destination-input">
+                <label for="destination-list">Where to:</label>
+                <select aria-label="select-destination" class="destination-list" name="destination-list">
+                  <option value=""></option>
+              </div>
+              <div class="travel-date">
+                <label for="startDate">Depart on:</label>
+                <input type="date" class="start-date" id="startDate" aria-label="departure-select">
+                <label for="duration">Duration of trip:</label>
+                <input type="number" min="1" max="1000" value="1" class="duration" id="duration" aria-label="trip-duration-select">
+              </div>
+              <div class="number-travel">
+                <label for="numTravelers">Number of Travelers</label>
+                <input type="number" min="1" max="25" value="1" id="numTravelers" aria-label="number-of-travelers-select">
+              </div>
+              <button class="book-trip-btn">Book this trip</button>
+              <button class="estimate-trip">Get estimate for this trip</button>
+              <div class="display-estimates"></div>
+            </div>
+          </form>
+        </section>
+      </section>
+      <section class="trip-cards">
+        <h2 class="past-title">Your Trips</h2>
+        <div class="cards-wrapper"></div>
+      </section>
     </main>
     <footer>
       <section class="contact-info">
