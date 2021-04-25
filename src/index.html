@@ -23,35 +23,31 @@
           <form action="" class="book">
             <h3 class="book-title">Book a trip with us:</h3>
             <div class="book-inputs">
-              <div class="destination-input"></div>
+              <div class="destination-input">
+                <label for="destination-list">Where to:</label>
+                <select aria-label="select-destination" class="destination-list" name="destination-list">
+                  <option value=""></option>
+              </div>
               <div class="travel-date">
                 <label for="startDate">Depart on:</label>
-                <input type="date" class="start-date" id="startDate">
-                <label for="endDate">Duration of trip:</label>
-                <input type="number" min="1" max="1000" value="1" class="end-date" id="endDate">
+                <input type="date" class="start-date" id="startDate" aria-label="departure-select">
+                <label for="duration">Duration of trip:</label>
+                <input type="number" min="1" max="1000" value="1" class="duration" id="duration" aria-label="trip-duration-select">
               </div>
               <div class="number-travel">
                 <label for="numTravelers">Number of Travelers</label>
-                <input type="number" min="1" max="25" value="1" id="numTravelers">
+                <input type="number" min="1" max="25" value="1" id="numTravelers" aria-label="number-of-travelers-select">
               </div>
               <button class="book-trip-btn">Book this trip</button>
+              <button class="estimate-trip">Get estimate for this trip</button>
+              <div class="display-estimates"></div>
             </div>
           </form>
         </section>
       </section>
       <section class="trip-cards">
-        <article class="past-trips">
-          <h2 class="past-title">Past Trips</h2>
-        </article>
-        <article class="current-trips">
-          <h2 class="current-title">Current Trips</h2>
-        </article>
-        <article class="upcoming-trips">
-          <h2 class="upcoming-title">Upcoming Trips</h2>
-        </article>
-        <article class="pending-trips">
-          <h2 class="pending-title">Pending Trips</h2>
-        </article>
+        <h2 class="past-title">Your Trips</h2>
+        <div class="cards-wrapper"></div>
       </section>
     </main>
     <footer>

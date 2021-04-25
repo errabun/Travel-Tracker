@@ -33,27 +33,16 @@
     h2 {
       text-decoration: underline;
       color: $header-background;
+      @include flex-center;
+      font-size: -webkit-xxx-large;
     }
 
     h3 {
       margin: 0;
-      align-self: center;
     }
 
     .book-trip {
       @include flex-center;
-    }
-  }
-
-  .trip-cards {
-    display: flex;
-    justify-content: space-between;
-
-    .past-trips,
-    .current-trips,
-    .upcoming-trips,
-    .pending-trips {
-      border: 5px solid grey;
     }
   }
 
@@ -68,22 +57,29 @@
     }
   }
 
-  .past-trips {
-    display: flex;
-    flex-direction: column;
-    width: inherit;
 
-
-    img {
-      width: 150px;
-      height: 150px;
-    }
-
-
+  img {
+    width: 150px;
+    height: 150px;
   }
 
-  .current-trips {}
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-template-rows: 350px 350px 350px;
+    justify-content: center;
+
+    .destination-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: white;
+      margin: 15px;
+      border: 10px solid grey;
+    }
+  }
 }
+
 
 @media screen and (min-width: 768px) {
 
