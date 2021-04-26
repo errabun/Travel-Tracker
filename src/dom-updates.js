@@ -16,6 +16,7 @@ const domUpdates = {
   },
 
   addTripCardToDom(myTrips, allDestinations, element) {
+    element.innerHTML = '';
     return myTrips.map(trip => {
       return allDestinations.destinations.find(destination => {
         if (trip.destinationID === destination.id) {

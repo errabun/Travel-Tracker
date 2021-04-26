@@ -40,7 +40,7 @@ function checkLogin() {
     loginFormWrap.classList.add('hidden');
     userDashboardWrap.classList.remove('hidden');
   } else {
-    
+
   }
 }
 
@@ -74,6 +74,7 @@ function displayStartDOM () {
 }
 
 function postTrip() {
+  event.preventDefault();
   if ( new Date(departDaySelect.value) > Date.now() ) {
     let newTrip = fetch("http://localhost:3001/api/v1/trips", {
       method: 'POST',
@@ -90,9 +91,13 @@ function postTrip() {
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-    .then(data => traveler.myTrips.push(data.newTrip))
-    .then(updateMyTrips => allTrips.findTripsByID(traveler))
+    .then(data => {
+      console.log("DATA >>>> ", data)
+      traveler.myTrips.push(new Trip(data.newTrip))
+      domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
+    })
+    // .then(data => traveler.myTrips.push(data.newTrip))
+    // .then(updateMyTrips => allTrips.findTripsByID(traveler))
     .catch(err => console.log(err.message))
   } else {
     estimateDOMPointer.innerHTML = "Please select a date in the future";
