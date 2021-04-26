@@ -20,7 +20,7 @@ const bookTripBtn = document.querySelector('.book-trip-btn');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const errorMsgPointer = document.querySelector('.user-dashboard');
-const loginBtn = document.querySelector('#login-form-submit');
+const loginBtn = document.querySelector('.login-form-submit');
 
 window.addEventListener('load', onStart);
 bookTripBtn.addEventListener('click', postTrip);
@@ -89,9 +89,14 @@ function showEstimate() {
 }
 
 function checkLogin() {
+  event.preventDefault();
   const userNameInput = document.querySelector('#username-field');
   const passwordInput = document.querySelector('#password-field');
+  const loginFormWrap = document.querySelector('.login-section');
+  const userDashboardWrap = document.querySelector('.user-dashboard');
   if (passwordInput.value === 'travel2020' && userNameInput.value.includes('traveler')) {
-    
+    loginFormWrap.classList.add('hidden');
+    userDashboardWrap.classList.remove('hidden');
+
   }
 }
