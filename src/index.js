@@ -40,7 +40,8 @@ function checkLogin() {
     loginFormWrap.classList.add('hidden');
     userDashboardWrap.classList.remove('hidden');
   } else {
-
+    const loginErrorMsg = document.querySelector('.login-error-msg')
+    loginErrorMsg.innerHTML = 'Invalid username/password, please try again!'
   }
 }
 
@@ -96,9 +97,7 @@ function postTrip() {
       traveler.myTrips.push(new Trip(data.newTrip))
       domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
     })
-    // .then(data => traveler.myTrips.push(data.newTrip))
-    // .then(updateMyTrips => allTrips.findTripsByID(traveler))
-    .catch(err => console.log(err.message))
+    .catch(err => estimateDOMPointer.innerHTML = err.message)
   } else {
     estimateDOMPointer.innerHTML = "Please select a date in the future";
   }
