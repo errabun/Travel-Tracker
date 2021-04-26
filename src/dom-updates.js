@@ -51,6 +51,13 @@ const domUpdates = {
       <p class="estimate-all">Total All Travelers: ${estimatedTotalCost}</p>
       <p class="estimate-fees">Total + Agent Fees: ${totalPlusFees}</p>`
   },
+
+  displayBookConfirmation(element) {
+    element.innerHTML = `
+      <p>Are you sure you want to book this trip?</p>
+      <button class="yes-book">Yes, I'm sure!</button>
+      <button class="no-book">Not right now</button>`
+  },
 }
 
 export default domUpdates;

@@ -26,7 +26,7 @@ const userNameInput = document.querySelector('#username-field');
 
 
 // window.addEventListener('load', onStart);
-bookTripBtn.addEventListener('click', postTrip);
+bookTripBtn.addEventListener('click', bookTripConfirmation);
 estimateTripBtn.addEventListener('click', showEstimate);
 loginBtn.addEventListener('click', checkLogin);
 
@@ -74,6 +74,13 @@ function displayStartDOM () {
   domUpdates.bookNewTrip(allDestinations.destinations);
 }
 
+function bookTripConfirmation() {
+  event.preventDefault();
+  domUpdates.displayBookConfirmation(estimateDOMPointer);
+  const confirmBook = document.querySelector('.yes-book').addEventListener('click', postTrip)
+  // const denyBook = document.querySelector('.no-book').addEventListener('click', () => document.querySelector('.book').reset());    // figure out response for no booking
+}
+
 function postTrip() {
   event.preventDefault();
   if ( new Date(departDaySelect.value) > Date.now() ) {
@@ -93,7 +100,6 @@ function postTrip() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log("DATA >>>> ", data)
       traveler.myTrips.push(new Trip(data.newTrip))
       domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
     })
