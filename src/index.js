@@ -7,7 +7,7 @@ import TripRepo from './trips-repo';
 import domUpdates from './dom-updates';
 import datepicker from 'js-datepicker';
 
-let traveler, allTrips, allDestinations;
+let traveler, allTravelers, allTrips, allDestinations;
 
 const tripCardsGrid = document.querySelector('.cards-wrapper');
 const tripCardsSection = document.querySelector('.trip-cards');
@@ -21,6 +21,8 @@ const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const errorMsgPointer = document.querySelector('.user-dashboard');
 const loginBtn = document.querySelector('.login-form-submit');
+const userNameInput = document.querySelector('#username-field');
+
 
 window.addEventListener('load', onStart);
 bookTripBtn.addEventListener('click', postTrip);
@@ -31,6 +33,7 @@ loginBtn.addEventListener('click', checkLogin);
 function onStart() {
   loadAPIs(2)
   .then(allData => {
+    allTravelers = allData.getAllTravelers;
     traveler = new Traveler(allData.getSingleTraveler);
     allTrips = new TripRepo(allData.getAllTrips);
     allDestinations = allData.getAllDestinations;
@@ -90,7 +93,6 @@ function showEstimate() {
 
 function checkLogin() {
   event.preventDefault();
-  const userNameInput = document.querySelector('#username-field');
   const passwordInput = document.querySelector('#password-field');
   const loginFormWrap = document.querySelector('.login-section');
   const userDashboardWrap = document.querySelector('.user-dashboard');
@@ -98,5 +100,13 @@ function checkLogin() {
     loginFormWrap.classList.add('hidden');
     userDashboardWrap.classList.remove('hidden');
 
+  }
+}
+
+function checkLoginIdValidity() {
+  let userId = userNameInput.value.slice(8);
+  let possibleIds = allTravelers.travelers.length;
+  if (userId > 0 && userId <= possibleIds) {
+    return userId;
   }
 }

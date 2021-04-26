@@ -7,18 +7,18 @@
   </head>
   <body>
     <main>
-      <form class="login-section">
+      <form class="login-section hidden">
         <h1 class="login-header">Viaje Travel Login</h1>
         <div id="login-error-msg-holder">
           <p id="login-error-msg"></p>
         </div>
         <form id="login-form">
-          <input type="text" name="username" id="username-field" class="login-input" placeholder="Username">
+          <input type="text" name="username" id="username-field" class="login-input" placeholder="Username" required aria>
           <input type="password" name="password" id="password-field" class="login-input" placeholder="Password">
           <button type="submit" class="login-form-submit">Login</button>
         </form>
       </form>
-      <section class="user-dashboard hidden">
+      <section class="user-dashboard">
         <header>
           <section class="welcome-logo">
             <h1>Let's Travel!</h1>
