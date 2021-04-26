@@ -10,7 +10,7 @@ class Traveler {
 
   calcPrevYearSpending(destinationData) {
     return this.myTrips.reduce((total, trip) => {
-      let curYear = 2020;
+      let curYear = new Date().getFullYear();
       let tripYear = parseInt(trip.date.split('/')[0]);
       let getDestination = destinationData.find(destination => destination.id === trip.destinationID);
       if (tripYear === curYear - 1) {
@@ -22,7 +22,7 @@ class Traveler {
 
   calcCurrentYearSpending(destinationData) {
     return this.myTrips.reduce((total, trip) => {
-      let curYear = 2020;
+      let curYear = new Date().getFullYear();
       let tripYear = parseInt(trip.date.split('/')[0]);
       let getDestination = destinationData.find(destination => destination.id === trip.destinationID);
       if (tripYear === curYear) {
@@ -32,9 +32,6 @@ class Traveler {
     }, 0)
   }
 
-  getPendingTrips() {
-    return this.myTrips.filter(trip => trip.status === 'pending')
-  }
 }
 
 export default Traveler;

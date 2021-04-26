@@ -7,27 +7,56 @@ import TripRepo from './trips-repo';
 import domUpdates from './dom-updates';
 import datepicker from 'js-datepicker';
 
-let traveler, allTrips, allDestinations;
+let traveler, allTravelers, allTrips, allDestinations;
+let userID = 2;
 
 const tripCardsGrid = document.querySelector('.cards-wrapper');
 const tripCardsSection = document.querySelector('.trip-cards');
 const departDay = document.querySelector('.start-date');
 const destinationSelect = document.querySelector('.destination-list');
-const departDaySelect = document.querySelector('#startDate');
+const departDaySelect = document.querySelector('#depart');
 const tripDurationSelect = document.querySelector('#duration');
 const numTravelersSelect = document.querySelector('#numTravelers');
 const bookTripBtn = document.querySelector('.book-trip-btn');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
+const errorMsgPointer = document.querySelector('.user-dashboard');
+const loginBtn = document.querySelector('.login-form-submit');
+const userNameInput = document.querySelector('#username-field');
 
-window.addEventListener('load', onStart)
-bookTripBtn.addEventListener('click', postTrip)
-estimateTripBtn.addEventListener('click', showEstimate)
 
+// window.addEventListener('load', onStart);
+bookTripBtn.addEventListener('click', postTrip);
+estimateTripBtn.addEventListener('click', showEstimate);
+loginBtn.addEventListener('click', checkLogin);
 
-function onStart() {
-  loadAPIs(2)
+function checkLogin() {
+  event.preventDefault();
+  const passwordInput = document.querySelector('#password-field');
+  const loginFormWrap = document.querySelector('.login-section');
+  const userDashboardWrap = document.querySelector('.user-dashboard');
+  if (passwordInput.value === 'travel2020' && userNameInput.value.includes('traveler') && checkLoginIdValidity()) {
+    onStart(checkLoginIdValidity());
+    loginFormWrap.classList.add('hidden');
+    userDashboardWrap.classList.remove('hidden');
+  } else {
+    
+  }
+}
+
+function checkLoginIdValidity() {
+  let userId = userNameInput.value.slice(8);
+  if (userId > 0 && userId <= 50) {
+    return userId;
+  } else {
+    return false;
+  }
+}
+
+function onStart(userID) {
+  loadAPIs(userID)
   .then(allData => {
+    allTravelers = allData.getAllTravelers;
     traveler = new Traveler(allData.getSingleTraveler);
     allTrips = new TripRepo(allData.getAllTrips);
     allDestinations = allData.getAllDestinations;
@@ -45,13 +74,12 @@ function displayStartDOM () {
 }
 
 function postTrip() {
-  event.preventDefault();
   if ( new Date(departDaySelect.value) > Date.now() ) {
     let newTrip = fetch("http://localhost:3001/api/v1/trips", {
       method: 'POST',
       body: JSON.stringify({
         "id": allTrips.allTrips.length + 1,
-        "userID": 2,
+        "userID": traveler.id,
         "destinationID": parseInt(destinationSelect.value),
         "travelers": numTravelersSelect.value,
         "date": formatDate(departDaySelect.value),
@@ -64,7 +92,10 @@ function postTrip() {
     .then(response => response.json())
     .then(data => console.log(data))
     .then(data => traveler.myTrips.push(data.newTrip))
+    .then(updateMyTrips => allTrips.findTripsByID(traveler))
     .catch(err => console.log(err.message))
+  } else {
+    estimateDOMPointer.innerHTML = "Please select a date in the future";
   }
 }
 

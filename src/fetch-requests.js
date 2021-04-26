@@ -1,28 +1,28 @@
 const loadAPIs = (id) => {
 
   const getAllTravelers = fetch('http://localhost:3001/api/v1/travelers')
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(travelersData => {
       console.log('travelers: ', travelersData)
       return travelersData;
     })
 
   const getSingleTraveler = fetch(`http://localhost:3001/api/v1/travelers/${id}`)
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(singleTravelerData => {
       console.log('singleTraveler: ', singleTravelerData)
       return singleTravelerData
     })
 
   const getAllTrips = fetch('http://localhost:3001/api/v1/trips')
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(tripsData => {
       console.log('trips: ', tripsData)
       return tripsData;
     })
 
   const getAllDestinations = fetch('http://localhost:3001/api/v1/destinations')
-    .then(response => response.json())
+    .then(response => checkForError(response))
     .then(destinationsData => {
       console.log('destinations: ', destinationsData)
       return destinationsData;
@@ -37,6 +37,17 @@ const loadAPIs = (id) => {
       allData.getAllDestinations = data[3];
       return allData;
     })
-    .catch(err => console.log('it broke...', err.message))
+    .catch(err => errorMsgPointer.insertAdjacentHTML('afterend', `
+      <h1 class="error-msg">Something isn't right, please try again!</h1>
+      <p>ERROR: ${err.message}</p>`))
 }
-export default loadAPIs; 
+
+function checkForError(response) {
+  if (response.ok) {
+    return response.json();
+  } else {
+    errorMsgPointer.insertAdjacentHTML('afterend', `
+      <h1 class="error-msg">Something isn't right, please try again!</h1>`)
+  }
+}
+export default loadAPIs;
