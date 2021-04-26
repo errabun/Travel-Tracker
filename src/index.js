@@ -8,6 +8,7 @@ import domUpdates from './dom-updates';
 import datepicker from 'js-datepicker';
 
 let traveler, allTravelers, allTrips, allDestinations;
+let userID = 2;
 
 const tripCardsGrid = document.querySelector('.cards-wrapper');
 const tripCardsSection = document.querySelector('.trip-cards');
@@ -24,14 +25,36 @@ const loginBtn = document.querySelector('.login-form-submit');
 const userNameInput = document.querySelector('#username-field');
 
 
-window.addEventListener('load', onStart);
+// window.addEventListener('load', onStart);
 bookTripBtn.addEventListener('click', postTrip);
 estimateTripBtn.addEventListener('click', showEstimate);
 loginBtn.addEventListener('click', checkLogin);
 
+function checkLogin() {
+  event.preventDefault();
+  const passwordInput = document.querySelector('#password-field');
+  const loginFormWrap = document.querySelector('.login-section');
+  const userDashboardWrap = document.querySelector('.user-dashboard');
+  if (passwordInput.value === 'travel2020' && userNameInput.value.includes('traveler') && checkLoginIdValidity()) {
+    onStart(checkLoginIdValidity());
+    loginFormWrap.classList.add('hidden');
+    userDashboardWrap.classList.remove('hidden');
+  } else {
+    
+  }
+}
 
-function onStart() {
-  loadAPIs(2)
+function checkLoginIdValidity() {
+  let userId = userNameInput.value.slice(8);
+  if (userId > 0 && userId <= 50) {
+    return userId;
+  } else {
+    return false;
+  }
+}
+
+function onStart(userID) {
+  loadAPIs(userID)
   .then(allData => {
     allTravelers = allData.getAllTravelers;
     traveler = new Traveler(allData.getSingleTraveler);
@@ -89,24 +112,4 @@ function showEstimate() {
   const estimatedTotalCost = costPerPerson * numTravelersSelect.value;
   const totalPlusFees = parseInt(estimatedTotalCost * 1.1).toFixed(2);
   domUpdates.displayEstimateCost(estimateDOMPointer, costPerPerson, estimatedTotalCost, totalPlusFees);
-}
-
-function checkLogin() {
-  event.preventDefault();
-  const passwordInput = document.querySelector('#password-field');
-  const loginFormWrap = document.querySelector('.login-section');
-  const userDashboardWrap = document.querySelector('.user-dashboard');
-  if (passwordInput.value === 'travel2020' && userNameInput.value.includes('traveler')) {
-    loginFormWrap.classList.add('hidden');
-    userDashboardWrap.classList.remove('hidden');
-
-  }
-}
-
-function checkLoginIdValidity() {
-  let userId = userNameInput.value.slice(8);
-  let possibleIds = allTravelers.travelers.length;
-  if (userId > 0 && userId <= possibleIds) {
-    return userId;
-  }
 }
