@@ -6,13 +6,24 @@
     <title>Viaje!</title>
   </head>
   <body>
-    <header>
-      <section class="welcome-logo">
-        <h1>Let's Travel!</h1>
-        <h1><i class="fas fa-passport"></i>Viaje Travel</h1>
-      </section>
-    </header>
-    <main class="user-dashboard">
+    <main>
+      <form class="login-section hidden">
+        <h1 id="login-header">Login</h1>
+        <div id="login-error-msg-holder">
+          <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+        </div>
+        <form id="login-form">
+          <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+          <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+          <input type="submit" value="Login" id="login-form-submit">
+        </form>
+      </form>
+      <header>
+        <section class="welcome-logo">
+          <h1>Let's Travel!</h1>
+          <h1><i class="fas fa-passport"></i>Viaje Travel</h1>
+        </section>
+      </header>
       <section class="stats-book">
         <section class="user-stats">
           <h3 class="welcome"></h3>
@@ -51,7 +62,7 @@
         <h2 class="past-title">Your Trips</h2>
         <div class="cards-wrapper"></div>
       </section>
-    </main>
+
     <footer>
       <section class="contact-info">
         <p class="address">
@@ -62,6 +73,8 @@
         <p>Email: support@viaje.com</p>
       </section>
     </footer>
+  </main>
+
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

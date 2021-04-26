@@ -20,10 +20,12 @@ const bookTripBtn = document.querySelector('.book-trip-btn');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const errorMsgPointer = document.querySelector('.user-dashboard');
+const loginBtn = document.querySelector('#login-form-submit');
 
-window.addEventListener('load', onStart)
-bookTripBtn.addEventListener('click', postTrip)
-estimateTripBtn.addEventListener('click', showEstimate)
+window.addEventListener('load', onStart);
+bookTripBtn.addEventListener('click', postTrip);
+estimateTripBtn.addEventListener('click', showEstimate);
+loginBtn.addEventListener('click', checkLogin);
 
 
 function onStart() {
@@ -46,7 +48,6 @@ function displayStartDOM () {
 }
 
 function postTrip() {
-  // event.preventDefault();
   if ( new Date(departDaySelect.value) > Date.now() ) {
     let newTrip = fetch("http://localhost:3001/api/v1/trips", {
       method: 'POST',
@@ -85,4 +86,12 @@ function showEstimate() {
   const estimatedTotalCost = costPerPerson * numTravelersSelect.value;
   const totalPlusFees = parseInt(estimatedTotalCost * 1.1).toFixed(2);
   domUpdates.displayEstimateCost(estimateDOMPointer, costPerPerson, estimatedTotalCost, totalPlusFees);
+}
+
+function checkLogin() {
+  const userNameInput = document.querySelector('#username-field');
+  const passwordInput = document.querySelector('#password-field');
+  if (passwordInput.value === 'travel2020' && userNameInput.value.includes('traveler')) {
+    
+  }
 }
