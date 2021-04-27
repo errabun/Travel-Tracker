@@ -1,24 +1,19 @@
 import './css/base.scss';
 import loadAPIs from './fetch-requests';
-import Destinations from './destination';
 import Traveler from './traveler';
 import Trip from './trip';
 import TripRepo from './trips-repo';
 import domUpdates from './dom-updates';
-import datepicker from 'js-datepicker';
 
 let traveler, allTrips, allDestinations;
 
 const tripCardsGrid = document.querySelector('.cards-wrapper');
-const tripCardsSection = document.querySelector('.trip-cards');
-const departDay = document.querySelector('.start-date');
 const destinationSelect = document.querySelector('.destination-list');
 const departDaySelect = document.querySelector('#depart');
 const tripDurationSelect = document.querySelector('#duration');
 const numTravelersSelect = document.querySelector('#numTravelers');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
-const errorMsgPointer = document.querySelector('.user-dashboard');
 const loginBtn = document.querySelector('.login-form-submit');
 const userNameInput = document.querySelector('#username-field');
 
@@ -53,13 +48,13 @@ function getValidLoginID() {
 
 function getUser(userID) {
   loadAPIs(userID)
-  .then(allData => {
-    traveler = new Traveler(allData.getSingleTraveler);
-    allTrips = new TripRepo(allData.getAllTrips);
-    allDestinations = allData.getAllDestinations;
-    allTrips.findTripsByID(traveler);
-    displayStartDOM();
-  })
+    .then(allData => {
+      traveler = new Traveler(allData.getSingleTraveler);
+      allTrips = new TripRepo(allData.getAllTrips);
+      allDestinations = allData.getAllDestinations;
+      allTrips.findTripsByID(traveler);
+      displayStartDOM();
+    })
 }
 
 function displayStartDOM () {
@@ -87,7 +82,7 @@ function bookTripConfirmation() {
 function postTrip() {
   event.preventDefault();
   estimateDOMPointer.innerHTML = '';
-  let newTrip = fetch("http://localhost:3001/api/v1/trips", {
+  fetch("http://localhost:3001/api/v1/trips", {
     method: 'POST',
     body: JSON.stringify({
       "id": allTrips.allTrips.length + 1,
@@ -101,13 +96,13 @@ function postTrip() {
     }),
     headers: {'Content-Type': 'application/json'}
   })
-  .then(response => response.json())
-  .then(data => {
-    traveler.myTrips.push(new Trip(data.newTrip))
-    allTrips.allTrips.push(new Trip(data.newTrip))
-    domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
-  })
-  .catch(err => estimateDOMPointer.innerHTML = err.message)
+    .then(response => response.json())
+    .then(data => {
+      traveler.myTrips.push(new Trip(data.newTrip))
+      allTrips.allTrips.push(new Trip(data.newTrip))
+      domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
+    })
+    .catch(err => estimateDOMPointer.innerHTML = err.message)
 }
 
 function formatDatePost(dateInput) {

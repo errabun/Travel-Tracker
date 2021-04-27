@@ -31,7 +31,8 @@ const loadAPIs = (id) => {
     })
     .catch(err => errorMsgPointer.insertAdjacentHTML('afterend', `
       <h1 class="error-msg">Something isn't right, please try again!</h1>
-      <p>ERROR: ${err.message}</p>`))
+      <p>ERROR: ${err.message}</p>`)
+    )
 }
 
 function checkForError(response) {
