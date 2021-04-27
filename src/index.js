@@ -28,7 +28,6 @@ loginBtn.addEventListener('click', checkLogin);
 
 
 function checkLogin() {
-  event.preventDefault();
   const passwordInput = document.querySelector('#password-field');
   const loginFormWrap = document.querySelector('.login-section');
   const userDashboardWrap = document.querySelector('.user-dashboard');

@@ -162,9 +162,12 @@
     }
   }
 
-  header > h1 {
-    font-size: 35px;
+  header {
+    h1 {
+      font-size: 35px;
+    }
   }
+
 
   .cards-wrapper {
     grid-template-columns: 1fr 1fr 1fr;

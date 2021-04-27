@@ -14,10 +14,6 @@ describe('TripRepo', function() {
     traveler = new Traveler(travelerInfo);
 
     tripRepo = new TripRepo(tripData)
-    //
-    // tripInfo = tripData[2];
-    //
-    // trip = new Trip(tripInfo);
 
   });
 
@@ -106,6 +102,16 @@ describe('TripRepo', function() {
         "duration": 4,
         "status": "approved",
         "suggestedActivities": []
+      },
+      {
+        "id": 9,
+        "userID": 3,
+        "destinationID": 17,
+        "travelers": 6,
+        "date": "2021/02/07",
+        "duration": 4,
+        "status": "approved",
+        "suggestedActivities": []
       }
     ])
   });
@@ -131,6 +137,16 @@ describe('TripRepo', function() {
         date: '2020/5/28',
         duration: 20,
         status: 'approved',
+        suggestedActivities: []
+      },
+      {
+        id: 9,
+        userID: 3,
+        destinationID: 17,
+        travelers: 6,
+        date: "2021/02/07",
+        duration: 4,
+        status: "approved",
         suggestedActivities: []
       }
     ])

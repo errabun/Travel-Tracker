@@ -79,6 +79,16 @@ let tripsData = {
       "duration": 4,
       "status": "approved",
       "suggestedActivities": []
+    },
+    {
+      "id": 9,
+      "userID": 3,
+      "destinationID": 17,
+      "travelers": 6,
+      "date": "2021/02/07",
+      "duration": 4,
+      "status": "approved",
+      "suggestedActivities": []
     }
   ]
 }

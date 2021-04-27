@@ -57,18 +57,28 @@ describe('Traveler', function() {
         duration: 20,
         status: 'approved',
         suggestedActivities: []
+      },
+      {
+        id: 9,
+        userID: 3,
+        destinationID: 17,
+        travelers: 6,
+        date: '2021/02/07',
+        duration: 4,
+        status: 'approved',
+        suggestedActivities: []
       }
     ])
   });
 
   it('should be able to calculate how much the traveler spent on trips the previous year', function() {
     tripInfo.findTripsByID(traveler);
-    expect(traveler.calcPrevYearSpending(destinationData.destinations)).to.eq(0)
+    expect(traveler.calcPrevYearSpending(destinationData.destinations)).to.eq(20168)
   });
 
   it('should be able to calculate how much the traveler spent on trips for the current year', function() {
     tripInfo.findTripsByID(traveler);
-    expect(traveler.calcCurrentYearSpending(destinationData.destinations)).to.eq(20168)
+    expect(traveler.calcCurrentYearSpending(destinationData.destinations)).to.eq(5247)
   });
 
   it('should be able to return the trips that are pending', function() {
