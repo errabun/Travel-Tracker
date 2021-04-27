@@ -27,13 +27,13 @@
         </header>
         <section class="stats-book">
           <section class="user-stats">
-            <h3 class="welcome"></h3>
+            <h2 class="welcome"></h2>
             <p class="previous-year"></p>
             <p class="current-year"></p>
           </section>
           <section class="book-trip">
             <form action="" class="book" onsubmit="return false">
-              <h3 class="book-title">Book a trip with us:</h3>
+              <h2 class="book-title">Book a trip with us:</h2>
               <div class="book-inputs">
                 <div class="destination-input">
                   <label for="destination-list">Where to:</label>
@@ -42,6 +42,7 @@
                 <div class="travel-date">
                   <label for="depart">Depart on:</label>
                   <input type="date" id="depart" name="depart"  aria-label="departure-select">
+                <div class="trip-duration">
                   <label for="duration">Duration of trip:</label>
                   <input type="number" min="1" max="1000" value="1" class="duration" id="duration" aria-label="trip-duration-select">
                 </div>
@@ -49,10 +50,7 @@
                   <label for="numTravelers">Number of Travelers</label>
                   <input type="number" min="1" max="25" value="1" id="numTravelers" aria-label="number-of-travelers-select">
                 </div>
-                <div class="button-wrapper">
-                  <!-- <button class="book-trip-btn">Book this trip</button> -->
-                  <button class="estimate-trip">Get estimate for this trip</button>
-                </div>
+                <button class="estimate-trip">Get estimate for this trip</button>
                 <div class="display-estimates"></div>
               </div>
             </form>

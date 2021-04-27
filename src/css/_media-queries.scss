@@ -8,10 +8,6 @@
 
     nav {
       @include flex-center;
-
-      button {
-        margin: 20px;
-      }
     }
 
     .welcome-logo {
@@ -25,24 +21,38 @@
     @include flex-center;
   }
 
+
+
   main {
     background-color: $main-background;
-    // @include flex-center;
     height: auto;
 
-    h2 {
-      text-decoration: underline;
-      color: $header-background;
-      @include flex-center;
-      font-size: -webkit-xxx-large;
+    button {
+      @include button-format;
     }
 
-    h3 {
+    h3,
+    .book-title {
       margin: 0;
     }
 
-    .book-trip {
+    .book {
       @include flex-center;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .book-inputs {
+      padding: 10px;
+      align-content: center;
+    }
+
+    .destination-input,
+    .travel-date,
+    .trip-duration,
+    .number-travel {
+      padding: 10px 0;
     }
   }
 
@@ -62,6 +72,13 @@
   img {
     width: auto;
     height: 160px;
+  }
+
+  .past-title {
+    text-decoration: underline;
+    color: $header-background;
+    @include flex-center;
+    font-size: -webkit-xxx-large;
   }
 
   .cards-wrapper {

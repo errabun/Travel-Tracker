@@ -22,11 +22,8 @@
   }
 
   .login-form-submit {
-    width: 20%;
-    padding: 6px;
-    font-weight: bolder;
-    cursor: pointer;
-    border-radius: 6px;
+    @include button-format;
+    width: 20%; 
   }
 
 }
