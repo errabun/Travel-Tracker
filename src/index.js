@@ -71,23 +71,20 @@ function displayStartDOM () {
   domUpdates.displayCurrentYrSpending(traveler, allDestinations.destinations)
   domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
   domUpdates.getDestinationNames(allDestinations.destinations);
-  document.getElementById('depart').value = formatDateCalendar();
+  formatDateCalendar();
 }
 
 function formatDateCalendar() {
   let date1 = new Date();
-  return `${date1.getFullYear()}-0${date1.getMonth() + 1}-${date1.getDate() + 1}`
+  let minDate = date1.toISOString().substring(0, 10);
+  return departDaySelect.setAttribute('min', minDate);
 }
 
 function bookTripConfirmation() {
   event.preventDefault();
-  if ( new Date(departDaySelect.value) > Date.now() ) {
-    domUpdates.displayBookConfirmation(estimateDOMPointer);
-    document.querySelector('.yes-book').addEventListener('click', postTrip)
-    // const denyBook = document.querySelector('.no-book').addEventListener('click', () => document.querySelector('.book').reset());    // figure out response for no booking
-  } else {
-    estimateDOMPointer.innerHTML = "Please select a date in the future";
-  }
+  domUpdates.displayBookConfirmation(estimateDOMPointer);
+  document.querySelector('.yes-book').addEventListener('click', postTrip)
+  document.querySelector('.no-book').addEventListener('click', () => estimateDOMPointer.innerHTML = '');
 }
 
 function postTrip() {
