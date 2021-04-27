@@ -120,34 +120,34 @@ describe('TripRepo', function() {
     tripRepo.findTripsByID(traveler);
     expect(traveler.myTrips).to.deep.eq([
       {
-        id: 3,
-        userID: 3,
-        destinationID: 1,
-        travelers: 4,
-        date: '2020/05/22',
-        duration: 17,
-        status: 'pending',
-        suggestedActivities: []
+        "id": 3,
+        "userID": 3,
+        "destinationID": 1,
+        "travelers": 4,
+        "date": '2020/05/22',
+        "duration": 17,
+        "status": 'pending',
+        "suggestedActivities": []
       },
       {
-        id: 7,
-        userID: 3,
-        destinationID: 17,
-        travelers: 5,
-        date: '2020/5/28',
-        duration: 20,
-        status: 'approved',
-        suggestedActivities: []
+        "id": 7,
+        "userID": 3,
+        "destinationID": 17,
+        "travelers": 5,
+        "date": '2020/5/28',
+        "duration": 20,
+        "status": 'approved',
+        "suggestedActivities": []
       },
       {
-        id: 9,
-        userID: 3,
-        destinationID: 17,
-        travelers: 6,
-        date: "2021/02/07",
-        duration: 4,
-        status: "approved",
-        suggestedActivities: []
+        "id": 9,
+        "userID": 3,
+        "destinationID": 17,
+        "travelers": 6,
+        "date": "2021/02/07",
+        "duration": 4,
+        "status": "approved",
+        "suggestedActivities": []
       }
     ])
   })
