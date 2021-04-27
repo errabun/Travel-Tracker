@@ -16,7 +16,7 @@ const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const loginBtn = document.querySelector('.login-form-submit');
 const userNameInput = document.querySelector('#username-field');
-const errorMsgPointer = document.querySelector('.stats-book'); 
+const errorMsgPointer = document.querySelector('.stats-book');
 
 
 estimateTripBtn.addEventListener('click', showEstimate);
@@ -102,6 +102,7 @@ function postTrip() {
       traveler.myTrips.push(new Trip(data.newTrip))
       allTrips.allTrips.push(new Trip(data.newTrip))
       domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
+      domUpdates.displayCurrentYrSpending(traveler, allDestinations.destinations)
     })
     .catch(err => estimateDOMPointer.innerHTML = err.message)
 }
