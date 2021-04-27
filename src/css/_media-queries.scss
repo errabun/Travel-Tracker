@@ -14,14 +14,13 @@
       margin: 0;
       display: flex;
       justify-content: space-between;
+
     }
   }
 
   footer {
     @include flex-center;
   }
-
-
 
   main {
     background-color: $main-background;

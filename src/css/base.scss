@@ -13,6 +13,9 @@
 
   .login-header {
     color: $header-background;
+    text-decoration: underline;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
   }
 
   .login-input,
@@ -23,7 +26,7 @@
 
   .login-form-submit {
     @include button-format;
-    width: 20%; 
+    width: 20%;
   }
 
 }
