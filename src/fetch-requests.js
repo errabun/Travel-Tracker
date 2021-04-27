@@ -2,24 +2,15 @@ const loadAPIs = (id) => {
 
   const getSingleTraveler = fetch(`http://localhost:3001/api/v1/travelers/${id}`)
     .then(response => checkForError(response))
-    .then(singleTravelerData => {
-      console.log('singleTraveler: ', singleTravelerData)
-      return singleTravelerData
-    })
+    .then(singleTravelerData => singleTravelerData)
 
   const getAllTrips = fetch('http://localhost:3001/api/v1/trips')
     .then(response => checkForError(response))
-    .then(tripsData => {
-      console.log('trips: ', tripsData)
-      return tripsData;
-    })
+    .then(tripsData => tripsData)
 
   const getAllDestinations = fetch('http://localhost:3001/api/v1/destinations')
     .then(response => checkForError(response))
-    .then(destinationsData => {
-      console.log('destinations: ', destinationsData)
-      return destinationsData;
-    })
+    .then(destinationsData => destinationsData)
 
   return Promise.all([getSingleTraveler, getAllTrips, getAllDestinations])
     .then(data => {

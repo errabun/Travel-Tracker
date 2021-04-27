@@ -1,5 +1,3 @@
-import Trip from './trip';
-
 class Traveler {
   constructor(data) {
     this.id = data.id;
@@ -37,7 +35,7 @@ class Traveler {
     if (pending.length === 0) {
       return `You currently don't have any pending trips!`
     } else {
-      return pending; 
+      return pending;
     }
   }
 }

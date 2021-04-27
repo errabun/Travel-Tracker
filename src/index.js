@@ -16,6 +16,7 @@ const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const loginBtn = document.querySelector('.login-form-submit');
 const userNameInput = document.querySelector('#username-field');
+const errorMsgPointer = document.querySelector('.stats-book'); 
 
 
 estimateTripBtn.addEventListener('click', showEstimate);
