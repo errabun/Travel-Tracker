@@ -7,12 +7,12 @@ const domUpdates = {
 
   displayPrevYrSpending(traveler, allDestinations) {
     let element = document.querySelector('.previous-year');
-    element.innerHTML = 'You spent $' + traveler.calcPrevYearSpending(allDestinations) + ' last year on trips'
+    element.innerHTML = 'You spent $' + traveler.calcPrevYearSpending(allDestinations) + ' last year on trips, what a year!'
   },
 
   displayCurrentYrSpending(traveler, allDestinations) {
     let element = document.querySelector('.current-year');
-    element.innerHTML = 'You spent $' + traveler.calcCurrentYearSpending(allDestinations) + ' this year on trips'
+    element.innerHTML = 'You\'ve spent $' + traveler.calcCurrentYearSpending(allDestinations) + ' so far this year on trips, keep it going!'
   },
 
   addTripCardToDom(myTrips, allDestinations, element) {

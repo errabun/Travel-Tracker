@@ -8,4 +8,27 @@
   font-weight: bolder;
   cursor: pointer;
   border-radius: 6px;
+  background-color: $main-background;
+  transition: background-color .5s;
+
+  &:hover {
+    background-color: $header-background;
+    color: white;
+  }
+}
+
+@mixin headline-font() {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  color: $header-background;
+  text-decoration: underline;
+}
+
+@mixin card-styling($thickness) {
+  border: $thickness solid grey;
+  border-radius: 30px;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  padding: 20px;
 }

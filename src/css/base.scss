@@ -5,31 +5,7 @@
 
 
 
-.login-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
-  .login-header {
-    color: $header-background;
-    text-decoration: underline;
-    font-family: 'Cinzel', serif;
-    font-weight: 600;
-  }
-
-  .login-input,
-  .login-form-submit {
-    margin: 20px;
-    width: 20%;
-  }
-
-  .login-form-submit {
-    @include button-format;
-    width: 20%;
-  }
-
-}
 
 .hidden {
   display: none !important;

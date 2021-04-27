@@ -1,10 +1,34 @@
 @media screen and (min-width: 320px) {
 
+  .login-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .login-header {
+      @include headline-font;
+    }
+
+    .login-input,
+    .login-form-submit {
+      margin: 20px;
+      width: 50%;
+    }
+
+    .login-form-submit {
+      @include button-format;
+    }
+  }
+
   header,
   footer {
     background-color: $header-background;
     height: 15%;
 
+    h1 {
+      font-size: 25px;
+    }
 
     nav {
       @include flex-center;
@@ -13,8 +37,8 @@
     .welcome-logo {
       margin: 0;
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
-
     }
   }
 
@@ -51,20 +75,27 @@
     .travel-date,
     .trip-duration,
     .number-travel {
+      @include flex-center;
       padding: 10px 0;
+      flex-direction: column;
     }
   }
 
   .stats-book {
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
-    padding-top: 40px;
+    justify-content: space-around;
+    padding-top: 15px;
+    margin: 15px;
 
     .user-stats,
     .book-trip {
-      border: 15px solid grey;
-      background-color: white;
+      @include card-styling(15px);
+      @include flex-center;
+    }
+
+    .book-trip {
+      margin-top: 15px;
     }
   }
 
@@ -74,10 +105,9 @@
   }
 
   .past-title {
-    text-decoration: underline;
-    color: $header-background;
+    @include headline-font;
     @include flex-center;
-    font-size: -webkit-xxx-large;
+    font-size: xxx-large;
   }
 
   .cards-wrapper {
@@ -87,17 +117,25 @@
 
     .destination-card {
       @include flex-center;
-      flex-direction: column;
-      background-color: white;
+      @include card-styling(10px);
       margin: 15px;
-      border: 10px solid grey;
-      align-items: center;
     }
   }
 }
 
 
 @media screen and (min-width: 768px) {
+
+  main {
+    .destination-input,
+    .travel-date,
+    .trip-duration,
+    .number-travel {
+      @include flex-center;
+      padding: 20px 0;
+      flex-direction: column;
+    }
+  }
 
   .cards-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -107,8 +145,26 @@
     display: flex;
     justify-content: space-around;
   }
+
+  .login-section {
+    .login-input,
+    .login-form-submit {
+      width: 30%;
+    }
+  }
 }
 @media screen and (min-width: 1024px) {
+
+  .login-section {
+    .login-input,
+    .login-form-submit {
+      width: 20%;
+    }
+  }
+
+  header > h1 {
+    font-size: 35px;
+  }
 
   .cards-wrapper {
     grid-template-columns: 1fr 1fr 1fr;
