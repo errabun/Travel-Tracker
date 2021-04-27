@@ -7,8 +7,7 @@ import TripRepo from './trips-repo';
 import domUpdates from './dom-updates';
 import datepicker from 'js-datepicker';
 
-let traveler, allTravelers, allTrips, allDestinations;
-let userID = 2;
+let traveler, allTrips, allDestinations;
 
 const tripCardsGrid = document.querySelector('.cards-wrapper');
 const tripCardsSection = document.querySelector('.trip-cards');
@@ -17,7 +16,7 @@ const destinationSelect = document.querySelector('.destination-list');
 const departDaySelect = document.querySelector('#depart');
 const tripDurationSelect = document.querySelector('#duration');
 const numTravelersSelect = document.querySelector('#numTravelers');
-const bookTripBtn = document.querySelector('.book-trip-btn');
+// const bookTripBtn = document.querySelector('.book-trip-btn');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const errorMsgPointer = document.querySelector('.user-dashboard');
@@ -25,8 +24,8 @@ const loginBtn = document.querySelector('.login-form-submit');
 const userNameInput = document.querySelector('#username-field');
 
 
-// window.addEventListener('load', onStart);
-bookTripBtn.addEventListener('click', postTrip);
+// window.addEventListener('load', getUser);
+// bookTripBtn.addEventListener('click', bookTripConfirmation);
 estimateTripBtn.addEventListener('click', showEstimate);
 loginBtn.addEventListener('click', checkLogin);
 
@@ -35,28 +34,29 @@ function checkLogin() {
   const passwordInput = document.querySelector('#password-field');
   const loginFormWrap = document.querySelector('.login-section');
   const userDashboardWrap = document.querySelector('.user-dashboard');
-  if (passwordInput.value === 'travel2020' && userNameInput.value.includes('traveler') && checkLoginIdValidity()) {
-    onStart(checkLoginIdValidity());
+  const userID = getValidLoginID();
+  if (passwordInput.value === 'travel2020' && userID) {
+    getUser(userID);
     loginFormWrap.classList.add('hidden');
     userDashboardWrap.classList.remove('hidden');
   } else {
-    
+    const loginErrorMsg = document.querySelector('.login-error-msg')
+    loginErrorMsg.innerHTML = 'Invalid username/password, please try again!'
   }
 }
 
-function checkLoginIdValidity() {
+function getValidLoginID() {
   let userId = userNameInput.value.slice(8);
-  if (userId > 0 && userId <= 50) {
+  if (userId > 0 && userId <= 50 && userNameInput.value.includes('traveler')) {
     return userId;
   } else {
     return false;
   }
 }
 
-function onStart(userID) {
+function getUser(userID) {
   loadAPIs(userID)
   .then(allData => {
-    allTravelers = allData.getAllTravelers;
     traveler = new Traveler(allData.getSingleTraveler);
     allTrips = new TripRepo(allData.getAllTrips);
     allDestinations = allData.getAllDestinations;
@@ -70,36 +70,49 @@ function displayStartDOM () {
   domUpdates.displayPrevYrSpending(traveler, allDestinations.destinations);
   domUpdates.displayCurrentYrSpending(traveler, allDestinations.destinations)
   domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
-  domUpdates.bookNewTrip(allDestinations.destinations);
+  domUpdates.getDestinationNames(allDestinations.destinations);
+  formatDateCalendar();
+}
+
+function formatDateCalendar() {
+  let date1 = new Date();
+  let minDate = date1.toISOString().substring(0, 10);
+  return departDaySelect.setAttribute('min', minDate);
+}
+
+function bookTripConfirmation() {
+  event.preventDefault();
+  domUpdates.displayBookConfirmation(estimateDOMPointer);
+  document.querySelector('.yes-book').addEventListener('click', postTrip)
+  document.querySelector('.no-book').addEventListener('click', () => estimateDOMPointer.innerHTML = '');
 }
 
 function postTrip() {
-  if ( new Date(departDaySelect.value) > Date.now() ) {
-    let newTrip = fetch("http://localhost:3001/api/v1/trips", {
-      method: 'POST',
-      body: JSON.stringify({
-        "id": allTrips.allTrips.length + 1,
-        "userID": traveler.id,
-        "destinationID": parseInt(destinationSelect.value),
-        "travelers": numTravelersSelect.value,
-        "date": formatDate(departDaySelect.value),
-        "duration": tripDurationSelect.value,
-        "status": 'pending',
-        "suggestedActivities": []
-      }),
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .then(data => traveler.myTrips.push(data.newTrip))
-    .then(updateMyTrips => allTrips.findTripsByID(traveler))
-    .catch(err => console.log(err.message))
-  } else {
-    estimateDOMPointer.innerHTML = "Please select a date in the future";
-  }
+  event.preventDefault();
+  estimateDOMPointer.innerHTML = '';
+  let newTrip = fetch("http://localhost:3001/api/v1/trips", {
+    method: 'POST',
+    body: JSON.stringify({
+      "id": allTrips.allTrips.length + 1,
+      "userID": traveler.id,
+      "destinationID": parseInt(destinationSelect.value),
+      "travelers": numTravelersSelect.value,
+      "date": formatDatePost(departDaySelect.value),
+      "duration": tripDurationSelect.value,
+      "status": 'pending',
+      "suggestedActivities": []
+    }),
+    headers: {'Content-Type': 'application/json'}
+  })
+  .then(response => response.json())
+  .then(data => {
+    traveler.myTrips.push(new Trip(data.newTrip))
+    domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
+  })
+  .catch(err => estimateDOMPointer.innerHTML = err.message)
 }
 
-function formatDate(dateInput) {
+function formatDatePost(dateInput) {
   const dateParts = dateInput.split('-')
   return dateParts.join('/')
 }
@@ -112,4 +125,5 @@ function showEstimate() {
   const estimatedTotalCost = costPerPerson * numTravelersSelect.value;
   const totalPlusFees = parseInt(estimatedTotalCost * 1.1).toFixed(2);
   domUpdates.displayEstimateCost(estimateDOMPointer, costPerPerson, estimatedTotalCost, totalPlusFees);
+  document.querySelector('.book-trip-btn').addEventListener('click', bookTripConfirmation);
 }

@@ -1,12 +1,5 @@
 const loadAPIs = (id) => {
 
-  const getAllTravelers = fetch('http://localhost:3001/api/v1/travelers')
-    .then(response => checkForError(response))
-    .then(travelersData => {
-      console.log('travelers: ', travelersData)
-      return travelersData;
-    })
-
   const getSingleTraveler = fetch(`http://localhost:3001/api/v1/travelers/${id}`)
     .then(response => checkForError(response))
     .then(singleTravelerData => {
@@ -28,13 +21,12 @@ const loadAPIs = (id) => {
       return destinationsData;
     })
 
-  return Promise.all([getAllTravelers, getSingleTraveler, getAllTrips, getAllDestinations])
+  return Promise.all([getSingleTraveler, getAllTrips, getAllDestinations])
     .then(data => {
       let allData = {};
-      allData.getAllTravelers = data[0];
-      allData.getSingleTraveler = data[1];
-      allData.getAllTrips = data[2];
-      allData.getAllDestinations = data[3];
+      allData.getSingleTraveler = data[0];
+      allData.getAllTrips = data[1];
+      allData.getAllDestinations = data[2];
       return allData;
     })
     .catch(err => errorMsgPointer.insertAdjacentHTML('afterend', `

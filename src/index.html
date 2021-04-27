@@ -10,7 +10,7 @@
       <form class="login-section">
         <h1 class="login-header">Viaje Travel Login</h1>
         <div id="login-error-msg-holder">
-          <p id="login-error-msg"></p>
+          <p class="login-error-msg"></p>
         </div>
         <form id="login-form">
           <input type="text" name="username" id="username-field" class="login-input" placeholder="Username" required>
@@ -32,7 +32,7 @@
             <p class="current-year"></p>
           </section>
           <section class="book-trip">
-            <form action="" class="book">
+            <form action="" class="book" onsubmit="return false">
               <h3 class="book-title">Book a trip with us:</h3>
               <div class="book-inputs">
                 <div class="destination-input">
@@ -50,7 +50,7 @@
                   <input type="number" min="1" max="25" value="1" id="numTravelers" aria-label="number-of-travelers-select">
                 </div>
                 <div class="button-wrapper">
-                  <button class="book-trip-btn">Book this trip</button>
+                  <!-- <button class="book-trip-btn">Book this trip</button> -->
                   <button class="estimate-trip">Get estimate for this trip</button>
                 </div>
                 <div class="display-estimates"></div>

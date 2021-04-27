@@ -16,6 +16,7 @@ const domUpdates = {
   },
 
   addTripCardToDom(myTrips, allDestinations, element) {
+    element.innerHTML = '';
     return myTrips.map(trip => {
       return allDestinations.destinations.find(destination => {
         if (trip.destinationID === destination.id) {
@@ -36,7 +37,7 @@ const domUpdates = {
     })
   },
 
-  bookNewTrip(destinations) {
+  getDestinationNames(destinations) {
     const destinationSelect = document.querySelector('.destination-list');
     destinationSelect.innerHTML =
     `${destinations.map(destination => {
@@ -48,7 +49,15 @@ const domUpdates = {
     return element.innerHTML = `
       <p class="estimate-per-person">Cost Per Person: ${costPerPerson}</p>
       <p class="estimate-all">Total All Travelers: ${estimatedTotalCost}</p>
-      <p class="estimate-fees">Total + Agent Fees: ${totalPlusFees}</p>`
+      <p class="estimate-fees">Total + Agent Fees: ${totalPlusFees}</p>
+      <button class="book-trip-btn">Book this trip!</button>`
+  },
+
+  displayBookConfirmation(element) {
+    element.innerHTML = `
+      <p>Are you sure you want to book this trip?</p>
+      <button class="yes-book">Yes, I'm sure!</button>
+      <button class="no-book">Not right now</button>`
   },
 }
 
