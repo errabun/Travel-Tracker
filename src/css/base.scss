@@ -5,31 +5,7 @@
 
 
 
-.login-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
-  .login-header {
-    color: $header-background;
-  }
-
-  .login-input,
-  .login-form-submit {
-    margin: 20px;
-    width: 20%;
-  }
-
-  .login-form-submit {
-    width: 20%;
-    padding: 6px;
-    font-weight: bolder;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-
-}
 
 .hidden {
   display: none !important;

@@ -31,6 +31,15 @@ class Traveler {
       return total;
     }, 0)
   }
+
+  getPendingTrips() {
+    let pending = this.myTrips.filter(trip => trip.status === 'pending');
+    if (pending.length === 0) {
+      return `You currently don't have any pending trips!`
+    } else {
+      return pending; 
+    }
+  }
 }
 
 export default Traveler;
