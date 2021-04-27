@@ -16,7 +16,6 @@ const destinationSelect = document.querySelector('.destination-list');
 const departDaySelect = document.querySelector('#depart');
 const tripDurationSelect = document.querySelector('#duration');
 const numTravelersSelect = document.querySelector('#numTravelers');
-// const bookTripBtn = document.querySelector('.book-trip-btn');
 const estimateTripBtn = document.querySelector('.estimate-trip');
 const estimateDOMPointer = document.querySelector('.display-estimates');
 const errorMsgPointer = document.querySelector('.user-dashboard');
@@ -24,10 +23,9 @@ const loginBtn = document.querySelector('.login-form-submit');
 const userNameInput = document.querySelector('#username-field');
 
 
-// window.addEventListener('load', getUser);
-// bookTripBtn.addEventListener('click', bookTripConfirmation);
 estimateTripBtn.addEventListener('click', showEstimate);
 loginBtn.addEventListener('click', checkLogin);
+
 
 function checkLogin() {
   event.preventDefault();
@@ -107,6 +105,7 @@ function postTrip() {
   .then(response => response.json())
   .then(data => {
     traveler.myTrips.push(new Trip(data.newTrip))
+    allTrips.allTrips.push(new Trip(data.newTrip))
     domUpdates.addTripCardToDom(traveler.myTrips, allDestinations, tripCardsGrid)
   })
   .catch(err => estimateDOMPointer.innerHTML = err.message)

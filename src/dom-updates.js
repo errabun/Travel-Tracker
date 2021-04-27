@@ -47,9 +47,9 @@ const domUpdates = {
 
   displayEstimateCost(element, costPerPerson, estimatedTotalCost, totalPlusFees) {
     return element.innerHTML = `
-      <p class="estimate-per-person">Cost Per Person: ${costPerPerson}</p>
-      <p class="estimate-all">Total All Travelers: ${estimatedTotalCost}</p>
-      <p class="estimate-fees">Total + Agent Fees: ${totalPlusFees}</p>
+      <p class="estimate-per-person">Cost Per Person: $${costPerPerson}</p>
+      <p class="estimate-all">Total All Travelers: $${estimatedTotalCost}</p>
+      <p class="estimate-fees">Total + Agent Fees: $${totalPlusFees}</p>
       <button class="book-trip-btn">Book this trip!</button>`
   },
 
